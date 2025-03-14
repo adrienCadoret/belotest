@@ -44,7 +44,7 @@ const handleUpdateStudent = asyncHandler(async (req, res) => {
 
     const updatedStudent = await updateStudent({
         ...updateData,
-        id
+        userId: id
     });
 
     if (!updatedStudent) {
