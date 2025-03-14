@@ -73,13 +73,14 @@ const handleGetStudentDetail = asyncHandler(async (req, res) => {
 
     res.status(200).json({
         success: true,
-        data: student
+        student
     });
 });
 
 const handleStudentStatus = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const { status, reviewerId } = req.body;
+    const { status } = req.body;
+    const reviewerId = req.user.id;
 
     if (!id) {
         res.status(400);
@@ -89,11 +90,6 @@ const handleStudentStatus = asyncHandler(async (req, res) => {
     if (typeof status !== 'boolean') {
         res.status(400);
         throw new Error('Status must be a boolean value');
-    }
-
-    if (!reviewerId) {
-        res.status(400);
-        throw new Error('Reviewer ID is required');
     }
 
     const updatedStudent = await setStudentStatus({
