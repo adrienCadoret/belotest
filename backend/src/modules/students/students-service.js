@@ -3,7 +3,6 @@ const { findAllStudents, findStudentDetail, findStudentToSetStatus, addOrUpdateS
 const { findUserById } = require("../../shared/repository");
 
 const checkStudentId = async (id) => {
-    console.log(id)
     const isStudentFound = await findUserById(id);
     if (!isStudentFound) {
         throw new ApiError(404, "Student not found");
@@ -60,7 +59,6 @@ const updateStudent = async (payload) => {
 }
 
 const setStudentStatus = async ({ userId, reviewerId, status }) => {
-    console.log(userId, reviewerId, status)
     await checkStudentId(userId);
 
     const affectedRow = await findStudentToSetStatus({ userId, reviewerId, status });

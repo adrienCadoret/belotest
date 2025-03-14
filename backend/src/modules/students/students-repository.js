@@ -46,6 +46,7 @@ const findAllStudents = async (payload) => {
 const addOrUpdateStudent = async (payload) => {
     const query = "SELECT * FROM student_add_update($1)";
     const queryParams = [payload];
+    console.log(queryParams)
     const { rows } = await processDBRequest({ query, queryParams });
     return rows[0];
 }

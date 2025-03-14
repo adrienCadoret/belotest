@@ -37,13 +37,15 @@ const handleAddStudent = asyncHandler(async (req, res) => {
 const handleUpdateStudent = asyncHandler(async (req, res) => {
     const { id } = req.params;
     const updateData = req.body;
-
     if (!id) {
         res.status(400);
         throw new Error('Student ID is required');
     }
 
-    const updatedStudent = await updateStudent(id, updateData);
+    const updatedStudent = await updateStudent({
+        ...updateData,
+        id
+    });
 
     if (!updatedStudent) {
         res.status(404);
