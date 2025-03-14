@@ -35,7 +35,6 @@ export const UserAccountBasic = ({ data }: { data: UserAccountBasicDataProps }) 
   const [state, setState] = React.useState<State>(initialState);
   const { handleAction } = useHandleMenuAction();
   const { users, userType, isLoading, isError, error } = data;
-  console.log(users)
   const columns: MRT_ColumnDef<UserAccountBasicProps>[] = React.useMemo(
     () => [
       { accessorKey: 'id', header: 'ID' },

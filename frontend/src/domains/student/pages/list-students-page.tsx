@@ -30,7 +30,6 @@ export const ListStudents: React.FC = () => {
   const [filter, setFilter] = React.useState<StudentFilter>({});
   const { data, isLoading, isError, error } = useGetStudentsQuery(filter);
 
-  console.log(data?.students)
   const searchStudent = (payload: StudentFilter) => {
     setFilter(payload);
   };

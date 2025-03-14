@@ -71,10 +71,9 @@ const handleGetStudentDetail = asyncHandler(async (req, res) => {
         throw new Error('Student not found');
     }
 
-    res.status(200).json({
-        success: true,
+    res.status(200).json(
         student
-    });
+    );
 });
 
 const handleStudentStatus = asyncHandler(async (req, res) => {
